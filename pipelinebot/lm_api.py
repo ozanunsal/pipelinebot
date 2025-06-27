@@ -8,10 +8,6 @@ from functools import lru_cache
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Set environment variables for Gemini CLI
-os.environ.setdefault('HOME', '/home/pipelinebot')
-os.environ.setdefault('GEMINI_CACHE_DIR', '/home/pipelinebot/.gemini')
-
 # Optimized prompt template - created once
 PROMPT_TEMPLATE = """You are an expert CI assistant analyzing job failure logs.
 

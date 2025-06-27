@@ -67,7 +67,6 @@ Possible Fixes: Increase timeout threshold or optimize test performance
 Set your API tokens and endpoints in `pipelinebot/config.py` or via environment variables:
 - `GITLAB_API_TOKEN`, `GITLAB_API_URL`
 - `TESTING_FARM_API_TOKEN`, `TESTING_FARM_API_URL`
-- `GOOGLE_API_KEY` - For Gemini AI integration
 
 ## 🐳 Containerization
 
@@ -96,7 +95,6 @@ podman run --rm pipeline-bot --project <project> --pipeline <pipeline_id>
 - Python 3.10+
 - GitLab API token
 - Testing Farm API token (optional)
-- Gemini API key
 
 ### Environment Variables
 
@@ -106,7 +104,6 @@ Set the following environment variables:
 - `GITLAB_API_URL`: GitLab API URL (default: https://gitlab.com/api/v4)
 - `TESTING_FARM_API_TOKEN`: Testing Farm API token (optional)
 - `TESTING_FARM_API_URL`: Testing Farm API URL (default: https://api.testing-farm.io/v0.1)
-- `GEMINI_API_KEY`: Your Gemini API key (required for AI analysis)
 
 ### Running with Docker
 
@@ -118,16 +115,9 @@ docker build -t pipelinebot .
 2. Run the container with your API keys:
 ```bash
 docker run -e GITLAB_API_TOKEN=your_gitlab_token \
-           -e GEMINI_API_KEY=your_gemini_api_key \
            -e TESTING_FARM_API_TOKEN=your_testing_farm_token \
            pipelinebot --help
 ```
-
-### Getting a Gemini API Key
-
-1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Create a new API key
-3. Set it as the `GEMINI_API_KEY` environment variable
 
 ## Usage
 
