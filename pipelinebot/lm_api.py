@@ -5,7 +5,6 @@ import os
 from functools import lru_cache
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Optimized prompt template - created once

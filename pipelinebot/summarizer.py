@@ -51,6 +51,17 @@ def clean_summary(text):
     return '\n'.join(lines)
 
 
+def format_fixes(fixes_text):
+    if not fixes_text:
+        return ''
+    # Split on newlines, semicolons, or numbered/bulleted lists
+    lines = re.split(r'\n|;|\d+\.\s*|-\s+', fixes_text)
+    # Remove empty lines and strip whitespace
+    lines = [line.strip() for line in lines if line.strip()]
+    # Add a number to each line
+    return '\n'.join([f'  {i+1}. {line}' for i, line in enumerate(lines)])
+
+
 def process_job(job, project):
     """Process a single job and return its summary."""
     name = job['name']
@@ -133,10 +144,10 @@ def summarize_pipeline(project, pipeline_id):
             summary_lines.append(
                 "{}\n"
                 "{} {}\n"
-                "{} {}\n".format(
+                "{}\n{}\n".format(
                     highlight('Job {}: {}'.format(idx, result['name']), Fore.CYAN),
                     highlight('Reason:', Fore.YELLOW), result['summary'],
-                    highlight('Possible Fixes:', Fore.MAGENTA), result['fixes']
+                    highlight('Possible Fixes:', Fore.MAGENTA), format_fixes(result['fixes'])
                 )
             )
         
